@@ -30,11 +30,13 @@ def signin(req):
 
 @csrf_exempt
 def signup(req):
+    print("--------------------")
     if req.method == 'POST':
         data = json.loads(req.body)
         username = data['username']
         password = data['password']
         email = data['email']
+        print(data)
         try:
             user=User.objects.get(username=username)
             return JsonResponse({'error':'Username already registered'},status=403)
