@@ -9,17 +9,18 @@ export default class Eachbooking extends Component {
           <main className="boardingPass-main">
             <div className="row">
               <section className="boardingPass-departur col-xs">
-                <span className="section-label">{ticket.src}</span>
-                <span className="boardingPass-departur-IATA">{ticket.src_code}</span>
+                <span className="section-label">{ticket.boarding_station}</span>
+                <span className="boardingPass-departur-IATA">{ticket.boarding_station_code}</span>
               </section>
 
               <section className="boardingPass-transport boardingPass-icon col-xs">
-                <i className="boardingPass-transport-icon material-icons">directions_railway</i>
+                <i className="boardingPass-transport-icon material-icons">directions_railway
+                </i>
               </section>
 
               <section className="boardingPass-arrival col-xs">
-                <span className="section-label">{ticket.dest}</span>
-                <span className="boardingPass-arrival-IATA">{ticket.dest_code}</span>
+                <span className="section-label">{ticket.destination}</span>
+                <span className="boardingPass-arrival-IATA">{ticket.destination_code}</span>
               </section>
             </div>
 
@@ -37,7 +38,7 @@ export default class Eachbooking extends Component {
 
               <section className="boardingPass-departurTime col-xs">
                 <span className="section-label">Departure</span>
-                <span>{ticket.dept}</span>
+                <span>{ticket.departure}</span>
               </section>
 
               <section className="boardingPass-arrivalTime col-xs">
@@ -60,12 +61,12 @@ export default class Eachbooking extends Component {
 
               <section className="boardingPass-terminal col-xs">
                 <span className="section-label">Train no.</span>
-                <span>{ticket.train_no}</span>
+                <span>{ticket.train_number}</span>
               </section>
 
               <section className="boardingPass-gate col-xs">
                 <span className="section-label">Platform No</span>
-                <span>{ticket.pltf}</span>
+                <span>{ticket.platform}</span>
               </section>
             </div>
 
@@ -90,6 +91,27 @@ export default class Eachbooking extends Component {
                 <span className="section-label">class</span>
                 <span>{ticket.seatclass}</span>
               </section>
+            </div>
+
+            <hr />
+
+            <div className="row">
+
+            <section className="boardingPass-icon col-xs">
+                <i className="material-icons">confirmation_number</i>
+              </section>
+    
+              <section className="boardingPass-passenger col-xs">
+                <span className="section-label">PNR</span>
+                <span>{ticket.pnr} </span>
+              </section>
+
+              <section className="boardingPass-passenger col-xs">
+              </section>
+
+              <section className="boardingPass-passenger col-xs">
+              </section>
+
             </div>
           </main>
 

@@ -1,0 +1,16 @@
+.boardingPass {
+    width: 420px;
+}
+
+.boardingPass-transport-icon {
+    font-size: 80px;
+}
+
+.bookcolor{
+    background-color: azure;
+}
+
+.btn.btn-link {
+    /* border: 1px solid #4b48d6; */
+    margin: 0.5%
+}

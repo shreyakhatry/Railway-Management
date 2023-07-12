@@ -100,6 +100,7 @@ export function setDoj(doj){
 }
 export function getSeats(trainId){
 	const url = `${rootUrl}book/seatinfo/${trainId}`;
+	console.log(url)
 	return (dispatch) => {
 		dispatch({type:FETCHING_SEATS});
 		axios.get(url,tokenHeader())
@@ -127,7 +128,7 @@ export function submitTicket(formValue,id,callback){
 	}
 }
 export function getmyTickets(){
-	const url = `${rootUrl}book/mybooking/`;
+	const url = `${rootUrl}book/mybookings/`;
 	return (dispatch) => {
 		dispatch({type:'fetching'});
 		axios.get(url,tokenHeader())

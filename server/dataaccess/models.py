@@ -26,6 +26,8 @@ class Train(models.Model):
     third_ac = models.IntegerField(default=10) # seats available in third ac
     sleeper = models.IntegerField(default=10) # seats available in sleeper
     days_availability = models.CharField(max_length=15) # availability of the train
+    arrival = models.TimeField()
+    departure = models.TimeField()
 
     class Meta:
         verbose_name_plural = 'Trains'

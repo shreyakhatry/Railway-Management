@@ -9,6 +9,7 @@ class Booking extends Component {
   formSubmit(formValue){
     this.props.getTrains(formValue);
     this.props.setDoj(formValue.doj);
+    this.props.setDoj(form.source);
   }
   render() {
     const {handleSubmit} = this.props;
@@ -24,8 +25,8 @@ class Booking extends Component {
               </div>
               <form onSubmit={handleSubmit(this.formSubmit.bind(this))}>
                 <div className="panel-body">
-                  <Field component={renderInput} type="text" name="source" label="Source" placeholder="Source station code"/>
-                  <Field component={renderInput} type="text" name="destination" label="Destination" placeholder="Destination station code"/>
+                  <Field component={renderInput} type="text" name="source" label="Source" placeholder="Source station code. Eg: TNA"/>
+                  <Field component={renderInput} type="text" name="destination" label="Destination" placeholder="Destination station code. Eg: DR"/>
                   <Field component={renderInput} type="date" name="doj" label="Journey Date" placeholder="dd/mm/yy"/>
                 </div>
                 <div className="panel-footer">

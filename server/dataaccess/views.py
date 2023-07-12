@@ -49,6 +49,7 @@ def create_train_and_routes_data() :
             try:
                 train = Train.objects.get(train_name=data['Train Name'])
             except:
+
                 train = Train.objects.create(
                             train_name=data['Train Name'],
                             train_number=data['Train No'],
@@ -58,11 +59,11 @@ def create_train_and_routes_data() :
                             second_ac=data['Seats'],
                             third_ac=data['Seats'],
                             sleeper=data['Seats'],
-                            days_availability=data['Availability'])
+                            days_availability=data['Availability'],
+                            arrival=data['Train Arrival'],
+                            departure=data['Train Departure'])
                 train.save()
 
-
-            print(train)
             route = Route.objects.get_or_create(
                         id=str(uuid4())[:8],
                         source=source[0],

@@ -49,7 +49,7 @@ def get_train_details(req, stn_codes, doj):
             destination = Station.objects.filter(station_code=dest.upper()).values()
         except Exception as e:
             return JsonResponse({"error": "Destination Station Not found"}, status=404)
-        print(source, destination)
+
         try:
             routes = Route.objects.get(source=source[0].get('id'), destination=destination[0].get('id'))
             trains = routes.train.all()
@@ -78,7 +78,7 @@ def book_ticket(req, train_number):
         # "passenger_age": ""
         # "passenger_gender": ""
         # "seatclass": ""
-        # "boarding_station_code: ""
+        # "boarding_station: ""
 
     # }
     # Request Type: POST
@@ -103,7 +103,7 @@ def book_ticket(req, train_number):
             age = data["passenger_age"]
             gender = data["passenger_gender"]
             seatclass = data["seatclass"]
-            boarding_station = Station.objects.get(station_code=data['boarding_station_code'])
+            boarding_station = Station.objects.get(station_name=data['boarding_station'])
             ticket = Ticket(
                 pnr=randint(100000000, 10000000000),
                 buyer=user,
@@ -124,10 +124,10 @@ def book_ticket(req, train_number):
     else:
         return JsonResponse({"error": "Method not allowed"})
 
-
+@csrf_exempt
 def seats_availabilty(req, train_number):
     # Example
-    # Request Endpoint: /book/seatsinfo/<train_number>
+    # Request Endpoint: /book/seatinfo/<train_number>
     # Payload: {}
     # Request Type: GET
     # Header: "Authorization": "<Token you get from signup/signin>"
@@ -149,9 +149,9 @@ def seats_availabilty(req, train_number):
             "third_ac": third_ac,
             "sleeper": sleeper,
         }
-        return JsonResponse(payload, status=200)
+        return JsonResponse("payload", status=200)
 
-
+@csrf_exempt
 def my_bookings(req):
     # Example
     # Request Endpoint: /book/mybookings
@@ -174,6 +174,8 @@ def my_bookings(req):
             tickets[i]["train_number"] = train.train_number
             tickets[i]["train"] = train.train_name
             tickets[i]["platform"] = randint(0, 9)
+            tickets[i]["arrival"] = train.arrival
+            tickets[i]["departure"] = train.departure
 
             tickets[i]["destination"] = train.train_destination.station_name
             tickets[i]["destination_code"] = train.train_destination.station_code

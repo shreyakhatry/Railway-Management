@@ -13,7 +13,6 @@ def getAvailableTrains(trains,doj):
     day=toDay(doj.weekday()) #converting to day(string) after getting 0-6
     avlTrains=[]
     for i in range(len(trains)):
-        print(trains[i])
         availability=newAvailablity(list(trains[i]['days_availability']))
         if day in availability:
             avlTrains.append(trains[i])

@@ -65,8 +65,8 @@ class Header extends Component {
 		if(authenticated){
 			return(
 				<section className="navbar-section">
-				   <a className="btn btn-link" onClick={this.logoutUser.bind(this)}>Logout</a>
            <Link className="btn btn-link" to="/mybookings">My bookings</Link>
+           <button className="btn btn-primary btn-lg" onClick={this.logoutUser.bind(this)}>Logout</button>
 				</section>
 			);
 		}
@@ -85,7 +85,7 @@ class Header extends Component {
           </section>
           <section className="navbar-center">
             <img src="/dist/img/rail.png" className='img-logo'/>
-            <h2 className="logo">Railesthan</h2>
+            <h2 className="logo">RailYatri</h2>
           </section>
           {this.renderAuthMode(authenticated)}
         </header>
@@ -99,7 +99,7 @@ class Header extends Component {
             <Switch>
               <Route path="/signin" component={Home}/>
               <Route exact path="/" component={requireAuth(Booking)}/>
-              <Route path="/ticket/:id/:trainNo/:doj" component={requireAuth(Ticket)}/>
+              <Route path="/ticket/:id/:source/:doj" component={requireAuth(Ticket)}/>
               <Route path="/mybookings" component={requireAuth(MyBookings)}/>
             </Switch>
         </AnimatedSwitch>
